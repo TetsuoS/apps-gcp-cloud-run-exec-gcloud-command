@@ -7,7 +7,7 @@ steps:
     args: ['push', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}']
   - name: 'gcr.io/cloud-builders/gcloud'
     id: 'deploy-cloud-run'
-    args: ['beta', 'run', 'deploy', '${_SERVICE_NAME}', '--image', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}', '--region', '${_REGION}']
+    args: ['beta', 'run', 'deploy', '${_SERVICE_NAME}', '--image', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}', '--region', '${_REGION}', '--platform', 'managed']
   - name: 'gcr.io/cloud-builders/gcloud'
     # 便宜上誰でもEndpointを実行できるようにしているが、実際は権限設定を行う
     id: 'apply-member-role-cloud-run'
